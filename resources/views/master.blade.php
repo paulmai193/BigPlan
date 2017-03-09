@@ -77,7 +77,7 @@
 			}
 			.popup {
 				padding:10px 20px;
-				max-width: 450px
+				max-width: 500px
 			}
 			.right {
 				text-align: right !important;

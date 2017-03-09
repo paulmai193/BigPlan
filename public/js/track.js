@@ -9,9 +9,9 @@ var track = {
 	// Variables
 	ranges : null,
 	currentPeriod : null,
-	shortestPeriod : 50,
+	shortestPeriod : 45,
 	longestPeriod : 0,
-	shortestMenstruation : 30,
+	shortestMenstruation : 20,
 	longestMenstruation : 0,
 };
 // Load period dates from local storage

@@ -17,7 +17,7 @@
 @stop
 @section('js-1')
 	<script>
-		$(document).ready(function() {
+		$(document).on("pagecreate", function() {
 			// Prepare UI
 			// Statistic information
 			$("#stats-total-period").append(track.ranges.length);

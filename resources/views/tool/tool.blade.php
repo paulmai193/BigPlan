@@ -18,16 +18,8 @@
 	</style>
 @stop
 @section('js')
+	<script src="/js/track.js"></script>
 	<script>
-		$( document ).ready(function() {
-			$( "form" ).submit(function( event ) {
-				event.preventDefault();
-				calculate();				
-			});
-			$( "#period-short" ).change(function() {
-				updateCondition();
-			});
-		})
 		function showResult(r, i) {
 			$("#popup-result-content-" + i).empty();
 			$("#popup-result-content-" + i).html(r);
@@ -42,6 +34,14 @@
 		function  calEnd(timeStamp, period) {
 			return timeStamp + (24 * 60 * 60) * (period - 11);
 		}
+		function fillLastPeriod(n) {
+			if(track.ranges.length > 0) {
+				$("#last-time-" + n).val(moment(track.ranges[track.ranges.length - 1].start).format("YYYY-MM-DD"));
+			}
+			else {
+				$("#last-time-" + n).val(moment().format("YYYY-MM-DD"));
+			}
+		}
 	</script>
 	@yield('js-1')
 @stop
@@ -54,8 +54,6 @@
 		<p>@yield('note')</p>
 	</div>
 	<div class ="content">
-		<form id="main-form">
-			@yield('form')
-		</form>
+		@yield('form')
 	</div>
 @stop
