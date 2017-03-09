@@ -9,9 +9,9 @@ var track = {
 	// Variables
 	ranges : null,
 	currentPeriod : null,
-	shortestPeriod : 45,
+	shortestPeriod : 46,
 	longestPeriod : 0,
-	shortestMenstruation : 20,
+	shortestMenstruation : 21,
 	longestMenstruation : 0,
 };
 // Load period dates from local storage
@@ -76,7 +76,9 @@ function updatePeriod(start,end) {
 	// Save to localStorage
 	if (typeof(Storage) !== "undefined") {
 		localStorage.setItem(PERIOD_RANGES, JSON.stringify(track.ranges));
-		localStorage.setItem(PERIOD_CURRENT, track.currentPeriod);
+		if(track.currentPeriod !== null) {
+			localStorage.setItem(PERIOD_CURRENT, track.currentPeriod);
+		}
 	}
 }
 function removeCurrentPeriod() {
