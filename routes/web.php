@@ -23,4 +23,4 @@ Route::get("/faq", "EndUserController@viewFaq");
 
 Route::get("/track/calendar", "EndUserController@viewTrackCalendar")->name('login');
 
-Route::get("/track/all", "EndUserController@getAllPeriodDays")->name('login');
+Route::get("/track/statistic", "EndUserController@viewTrackStatistic")->name('login');

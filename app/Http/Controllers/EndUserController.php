@@ -33,12 +33,7 @@ class EndUserController extends Controller {
 		return view("track/track-calendar");
 	}
 	
-	public function getAllPeriodDays() {
-		$periodDays = array();
-		$periodDays[] = array("start" => "2017-01-03", "end" => "2017-01-07", "current" => "no");
-		$periodDays[] = array("start" => "2017-01-26", "end" => "2017-01-30", "current" => "no");
-		$periodDays[] = array("start" => "2017-02-26", "end" => "2017-03-02", "current" => "yes");
-		
-		return $periodDays;
+	public function viewTrackStatistic() {
+		return view("track/track-statistic");
 	}
 }
