@@ -41,10 +41,8 @@
 			var pickupCalendarOptions = mainOptions;
 			pickupCalendarOptions["defaultDate"] = "+1w";
 			$("#period-calendar").datepicker(periodCalendarOptions);
-			
-			
 			// Modify add new period popup
-			if(track.currentPeriod !== "") {
+			if(track.currentPeriod !== null) {
 				showCheckFinishPeriod(1);
 			}
 			// Action of changing date-begin input
@@ -61,12 +59,12 @@
 			});
 			// Action of checked check-finish checkbox
 			$('#check-finish-i-' + 1).click(function() {
-				hidePopupInput(1);
+				hidePopupInput(this, 1);
 			});
 			// Action of submit update period form event
 			$("#form-" + 1).submit(function( event ) {
 				event.preventDefault();
-				if($('#check-finish-' + 1).is(':checked') && track.currentPeriod !== "") {
+				if($('#check-finish-i-' + 1).is(':checked') && track.currentPeriod !== null) {
 					removeCurrentPeriod()
 				}
 				else {
@@ -80,8 +78,8 @@
 @section('navigator')
 	<div data-role="navbar">
 		<ul>
-			<li><a href="/track/calendar" data-icon="custom-calendar" data-iconpos="top" class="ui-nodisc-icon ui-btn-active ui-state-persist">Lịch kinh nguyệt</a></li>
-			<li><a href="/track/statistic" data-icon="custom-statistic" data-iconpos="top" class="ui-nodisc-icon">Thống kê</a></li>
+			<li><a href="/track/calendar" data-icon="custom-calendar" class="ui-nodisc-icon ui-btn-active ui-state-persist" id="nav-1"></a></li>
+			<li><a href="/track/statistic" data-icon="custom-statistic" class="ui-nodisc-icon" id="nav-2"></a></li>
 		</ul>
 	</div>	
 @stop
@@ -90,6 +88,8 @@
 	<div class="content center">
 		<div id="period-calendar" data-inline="true"></div>
 	</div>
+	<br>
+	<!-- Update period -->
 	<div class ="content">
 		<div class="ui-grid-b">
 			<div class="ui-block-a"></div>

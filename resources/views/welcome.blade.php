@@ -17,4 +17,7 @@
 	<div class="title main">
 		Big Plan
 	</div>
+	<div class="title sub-title">
+		<h2>Version 1.0</h2>
+	</div>
 @stop

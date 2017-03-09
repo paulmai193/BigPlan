@@ -14,14 +14,10 @@
 	<div data-role="navbar">
 		<ul>
 			<li>
-				<a href="/method/1" data-icon="custom-refresh" data-iconpos="top" class="ui-nodisc-icon ui-btn-active ui-state-persist">
-					Chu kỳ đều
-				</a>
+				<a href="/method/1" data-icon="custom-refresh" data-iconpos="top" class="ui-nodisc-icon ui-btn-active ui-state-persist"></a>
 			</li>
 			<li>
-				<a href="/method/2" data-icon="custom-shuffle" data-iconpos="top" class="ui-nodisc-icon">
-					Chu kỳ không đều
-				</a>
+				<a href="/method/2" data-icon="custom-shuffle" data-iconpos="top" class="ui-nodisc-icon"></a>
 			</li>
 		</ul>
 	</div>	
@@ -36,10 +32,11 @@
 	<br>
 	<label for="period">Chu kỳ</label>
 	<input type="range" name="period" id="period" value="18" min="18" max="45" data-mini="false" data-highlight="true" required>
+	<br>
 	<div class="ui-grid-b center">
 		<div class="ui-block-a"></div>
 		<div class="ui-block-b">
-			<input type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEsUlEQVR4Xu1afWhbVRT/nftqTT9e0n2IMBnqpmMqU0RRkCnIhjB0MpGJos1r19qiS2Kd3yBsCPvDD2iTlEI7XJq0E+lAYcwPUOecDPxD/9HhBvMDFMomXde8dGlrknskcRmhMX29j3QuyXv/BHLOO/ee3/udc+499xJq/KEa9x8OAA4DahwBJwRqnABOEnRC4D9D4MWxBk8muRUQy8sdIkwyCZE+bPZ2Thba1l/6YCVSqYcFqKHcYwJyMm7yIQy3z863XcQAz3MHlnFd+lsQbiv/RC5ZPANN3G/2tv6S/Uf3RdaTEMcAXLNUYxLRT0SZB6b62qcKxygCwB2I7gawB0SfgPn7JZjQGgCtAEbNkJH9hTsQHQOwnYAIA3+UfUzCPWBsIdCb8ZB378IA+CLDEMJgwtZE0Dhc7sk098RuEZJ/BuG4GTQ25gDwRb6DEPdCEzfnWVHOcfVA9DECPiLw+/FQW+f/CsBFup+8rAD0jGwjKT92AHAY4ISAkwOcJGi3Cnh8sRulhutUyxMTzk33eU/m36vMKrBnrL55cua8ABpVAQAkk8Y3xXt3/Faw6qu0MsikB0b2EjK3qgLAUjuboKkAwoG5CgZA1e3S+pUZAuXzP7/xqbQQKB8CDgP+3fo6DHA2Q4vYDnv8w2vBYplqAKaQGk/2d4xfWntU4m5Q3xldR5o8BQjlvqUkik+Pu1bg4BOZXOlVAUD3xQZJcBcRdRFlDqqib6XPGXE3E74A4yszbGwu1RBZ1TXYOF1fPwBNW2llc76cwScSQeN1WwxoCUQflMAR1UFV9ZnRkQgb+y9LR0iFAdkJeV4YfjzN9CoBK1Qds9InxgUiGjJDrQMA8RUJgDsQexKSX2MB5QRkCYDMJKGJfWbQ6LsiAfD4o5tzMbrED4G746G2odIMyO4/Yttgg4XMdHo67P3GVg7Q/dEhIjzL4B2udGPZk+CMNnuXID7KhCOJoLGpFABNvsgGTYgfbX0HKf82zzY12qoCbtW2eNfgVbrL9cjVrvSXE+90JKwmvOil8PYxTV812wOw8mEJASfMoDFqiwGqALj9w0+DaBRMu82w962yAWBlSEGutA5QBUAPRDsJ2MeEtwtrb6n5LZoBCg5aqToAqKwDHAYoJkEnBGojBzB5/NF3WYj1RRsPyauJcLsEfhVEp+bLifmvuCmfz19OqMwkmGuLJ88JULNVxi2WSyaprY33e3/PyioTAADLd+1fnU5R0cEIEz1KoDcYGCGWA0UA1NVNFJ75VywAJet6beSA0sR3qoDDAGcpXNt7gRb/yB2S5IeQ2GX2G59ZlcmqqwJWDs+XL3hNDnKdGWo/rWrTSl/tmtzFi5IM+pwgf7AyriqXRGsE4ykwxcyw18h1hALREQDPgHEIxH+q2rTWpzsB3MfgVxKhtvcK9YsOHVp6Ii3M2jFm3mBt2LbGOEnamF8dtuw8cH0K6aOahhtsW7R6kXC8eWb2ofGh7uSCAOSEbRGX7hZb7DQkLefBfEGbm/v0/FB3vFD32pdjTcmU3EQsbNxCWXhUYp6In2n4Ot8jtAbAyosqkiufu1WR7zlXHACq7Yuq+uMwQBWxatN3GFBtX1TVn5pnwD96kACMutxpjwAAAABJRU5ErkJggg==" data-inline="true" value="Kiểm tra">
+			<input type="image" src="data:image/png;base64,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" data-inline="true" value="Kiểm tra">
 		</div>
 		<div class="ui-block-c"></div>
 	</div>

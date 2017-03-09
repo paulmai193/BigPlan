@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 	<head>
-		<title>Big Plan - @yield('title')</title>
+		<title>Big Plan (Version 1.0.1)</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,13 +19,30 @@
 					position: relative !important;
 				}
 			}
+			@media ( min-width: 40em ) {
+				/* Show the table header rows and set all cells to display: table-cell */
+				.my-custom-breakpoint td,
+				.my-custom-breakpoint th,
+				.my-custom-breakpoint tbody th,
+				.my-custom-breakpoint tbody td,
+				.my-custom-breakpoint thead td,
+				.my-custom-breakpoint thead th {
+					display: table-cell;
+					margin: 0;
+				}
+				/* Hide the labels in each cell */
+				.my-custom-breakpoint td .ui-table-cell-label,
+				.my-custom-breakpoint th .ui-table-cell-label {
+					display: none;
+				}
+			}
 			body {
 				font-family: 'Montserrat', sans-serif !important;			
 				font-size: 100%;
 			}
 			.center {
-				text-align: center;
-				margin: 0 auto;
+				text-align: center !important;
+				margin: 0 auto !important;
 			}
 			.content.just-text {
 				text-align: justify;
@@ -48,7 +65,7 @@
 				font-style: italic;
 			}
 			.left {
-				text-align: left;
+				text-align: left !important;
 			}
 			.navigator-active {
 				background-color: #38c !important;
@@ -64,7 +81,7 @@
 				max-width: 450px
 			}
 			.right {
-				text-align: right;
+				text-align: right !important;
 			}
 			.title {
 				align-items: center;

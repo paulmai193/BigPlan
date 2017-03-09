@@ -1,11 +1,37 @@
 @extends('track.track')
+@section('css-1')
+	<style>
+		tr {
+			border-bottom: 1px solid lightgray;
+		}
+		td {
+			vertical-align: middle !important;
+		}
+		th.justify {
+			width: 30%;
+		}
+		.ui-table-columntoggle-btn {
+			display: none !important;
+		}
+	</style>
+@stop
 @section('js-1')
 	<script>
 		$(document).ready(function() {
-			$("#stats-shortest-period").html(" -- " + track.shortestPeriod);
-			$("#stats-longest-period").html(" -- " + track.longestPeriod);
+			// Prepare UI
+			// Statistic information
+			$("#stats-total-period").append(track.ranges.length);
+			$("#stats-shortest-period").append(track.shortestPeriod);
+			$("#stats-longest-period").append(track.longestPeriod);
+			$("#stats-longest-menstruation").append(track.longestMenstruation);
+			$("#stats-shortest-menstruation").append(track.shortestMenstruation);
+			if(track.currentPeriod !== null) {
+				var current = track.ranges[findPreriodById(track.currentPeriod)],
+				dateFormat = "D/MMM/YYYY";
+				$("#stats-current-menstruation").append(moment(current.start).format(dateFormat) + " - " + moment(current.end).format(dateFormat));
+			}
 			// Modify add new period popup
-			if(track.currentPeriod !== "") {
+			if(track.currentPeriod !== null) {
 				showCheckFinishPeriod(2);
 			}
 			// Action of changing date-begin input
@@ -22,12 +48,12 @@
 			});
 			// Action of checked check-finish checkbox
 			$('#check-finish-i-' + 2).click(function() {
-				hidePopupInput(2);
+				hidePopupInput(this, 2);
 			});
 			// Action of submit update period form event
 			$("#form-" + 2).submit(function( event ) {
 				event.preventDefault();
-				if($('#check-finish-' + 1).is(':checked') && track.currentPeriod !== "") {
+				if($('#check-finish-i-' + 1).is(':checked') && track.currentPeriod !== null) {
 					removeCurrentPeriod()
 				}
 				else {
@@ -41,29 +67,62 @@
 @section('navigator')
 	<div data-role="navbar">
 		<ul>
-			<li><a href="/track/calendar" data-icon="custom-calendar" data-iconpos="top" class="ui-nodisc-icon">Lịch kinh nguyệt</a></li>
-			<li><a href="/track/statistic" data-icon="custom-statistic" data-iconpos="top" class="ui-nodisc-icon ui-btn-active ui-state-persist">Thống kê</a></li>
+			<li><a href="/track/calendar" data-icon="custom-calendar" class="ui-nodisc-icon" id="nav-1"></a></li>
+			<li><a href="/track/statistic" data-icon="custom-statistic" class="ui-nodisc-icon ui-btn-active ui-state-persist" id="nav-2"></a></li>
 		</ul>
 	</div>	
 @stop
 @section('sub-title', 'Thống kê')
 @section('form')
-	<div class="content">
-		<div class="ui-grid-a">
-			<div class="ui-block-a right">
-				Chu kỳ ngắn nhất
-			</div>
-			<div class="ui-block-b left" id="stats-shortest-period">
-			</div>
-		</div>
-		<div class="ui-grid-a">
-			<div class="ui-block-a right">
-				Chu kỳ dài nhất
-			</div>
-			<div class="ui-block-b left" id="stats-longest-period">
-			</div>
-		</div>
-	</div>
+	<table data-role="table" id="movie-table" data-mode="columntoggle"  class="ui-responsive">
+		<thead>
+			<tr>
+				<th data-priority="2"></th>
+				<th data-priority="1" class="justify"></th>
+				<th data-priority="1" class="justify"></th>
+				<th data-priority="1" class="justify"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="center">1</td>
+				<td class="">Tổng số chu kỳ</td>
+				<td class="right" id="stats-total-period"></td>
+				<td class="">lần</td>
+			</tr>
+			<tr>
+				<td class="center">2</td>
+				<td class="">Chu kỳ ngắn nhất</td>
+				<td class="right" id="stats-shortest-period"></td>
+				<td class="">ngày</td>
+			</tr>
+			<tr>
+				<td class="center">3</td>
+				<td class="">Chu kỳ dài nhất</td>
+				<td class="right" id="stats-longest-period"></td>
+				<td class="">ngày</td>
+			</tr>
+			<tr>
+				<td class="center">4</td>
+				<td class="">Kỳ kinh ngắn nhất</td>
+				<td class="right" id="stats-shortest-menstruation"></td>
+				<td class="">ngày</td>
+			</tr>
+			<tr>
+				<td class="center">5</td>
+				<td class="">Kỳ kinh dài nhất</td>
+				<td class="right" id="stats-longest-menstruation"></td>
+				<td class="">ngày</td>
+			</tr>
+			<tr>
+				<td class="center">6</td>
+				<td class="">Kỳ kinh hiện tại</td>
+				<td class="right" id="stats-current-menstruation"></td>
+				<td class=""></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
 	<!-- Update period -->
 	<div class ="content">
 		<div class="ui-grid-b">
