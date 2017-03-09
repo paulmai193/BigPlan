@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ config('app.locale') }}" manifest="/bigplan-manifest.appcache">
 	<head>
 		<title>Big Plan (Version 1.0.1)</title>
 		<meta charset="utf-8">
@@ -7,9 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="manifest" href="/manifest.json">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-		<!--<link href="/css/app.css" rel="stylesheet" type="text/css">-->
 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<style type="text/css">
 			html { background-color: #333; }
 			@media only screen and (min-width: 720px){
