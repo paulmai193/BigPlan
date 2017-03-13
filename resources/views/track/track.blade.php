@@ -27,7 +27,7 @@
 	@yield('css-1')
 @stop
 @section('js')
-	<script src="/js/track.js"></script>
+	<script src="/js/track.min.js"></script>
 	<script>
 		function showCheckFinishPeriod(n) {
 			// Show close current period option

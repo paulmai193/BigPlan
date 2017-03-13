@@ -14,7 +14,7 @@
 	</style>
 @stop
 @section('js-1')
-	<script src="/js/track-calendar.js"></script>
+	<script src="/js/track-calendar.min.js"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">
