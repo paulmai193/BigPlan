@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Project xXx',
+    'name' => 'Big Plan',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+		
         /*
          * Package Service Providers...
          */
@@ -179,6 +179,9 @@ return [
 
 		// HTML Provider
 		//Illuminate\Html\HtmlServiceProvider,
+		
+		// HTML Minifier
+		//GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
     ],
 
     /*
@@ -228,8 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-		//'Form'      => Illuminate\Html\FormFacade,
-		//'View'      => Illuminate\Html\HtmlFacade,
+		// HTML Minifier
+		//'HTMLMin' => GrahamCampbell\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];

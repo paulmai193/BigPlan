@@ -14,69 +14,7 @@
 	</style>
 @stop
 @section('js-1')
-	<script>
-		$(document).on("pagecreate", function() {
-			var current;
-			// Modify add new period popup
-			if(track.currentPeriod !== null) {
-				current = track.ranges[track.findPreriodById(track.currentPeriod)];
-				showCheckFinishPeriod(1);
-			}
-			// Action of changing date-begin input
-			$("#date-begin-" + 1).change(function() {
-				updateCondition(1);
-			});
-			// Action of tapping to more-input-a button
-			$("#more-input-a-" + 1).on("tap", function() {
-				showMoreOptions(1);
-			});
-			// Action of tapping to btn-close button
-			$("#btn-close-" + 1).on("tap", function() {
-				closePopup(1);
-			});
-			// Action of checked check-finish checkbox
-			$('#check-finish-i-' + 1).click(function() {
-				hidePopupInput(this, 1);
-			});
-			// Action of submit update period form event
-			$("#form-" + 1).submit(function( event ) {
-				event.preventDefault();
-				if($('#check-finish-i-' + 1).is(':checked') && track.currentPeriod !== null) {
-					track.removeCurrentPeriod();
-				}
-				else {
-					track.updatePeriod($("#date-begin-" + 1).val(), $("#date-end-" + 1).val());
-				}
-				location.reload();
-			});
-			// Prepare UI
-			// Period calendar
-			var mainOptions = {
-				numberOfMonths: 1,
-				dateFormat: "yy-mm-dd",
-				changeMonth: false,
-			};
-			var periodCalendarOptions = mainOptions;
-			periodCalendarOptions["beforeShowDay"] = function(date) {
-				var date = moment(date).format("YYYY-MM-DD");
-				for(var i=0; i<track.ranges.length; i++) {
-					if(date >= track.ranges[i].start && date <= track.ranges[i].end) {
-						//if(track.TODAY >= track.ranges[i].start && track.TODAY <= track.ranges[i].end) {
-						if(typeof(current) !== "undefined" && current.id === track.ranges[i].id) {
-							return [true, "ui-state-current", "Ngày hành kinh"];
-						}
-						else {
-							return [true, "ui-state-highlight", "Ngày hành kinh"];
-						}
-					}
-				}
-				return [true, ""];
-			};
-			var pickupCalendarOptions = mainOptions;
-			pickupCalendarOptions["defaultDate"] = "+1w";
-			$("#period-calendar").datepicker(periodCalendarOptions);
-		})
-	</script>
+	<script src="/js/track-calendar.js"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">

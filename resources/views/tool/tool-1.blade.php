@@ -3,7 +3,7 @@
 	<script>
 		$(document).on("pagecreate", function() {
 			fillLastPeriod(1);
-			$("#period").val(track.shortestPeriod).slider("refresh");;
+			$("#period").val(track.shortestPeriod === 46 ? 30 : track.shortestPeriod > 18 ? track.shortestPeriod : 18).slider("refresh");;
 			$("#form-1").submit(function(event) {
 				event.preventDefault();
 				calculate1();				
@@ -56,7 +56,7 @@
 				<div class="ui-grid-b center">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
-						<input type="button" data-inline="false" value="OK" id="popup-result-btn-1">
+						<input type="button" data-inline="true" value="OK" id="popup-result-btn-1">
 					</div>
 					<div class="ui-block-c"></div>
 				</div>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}" manifest="/bigplan-manifest.appcache">
 	<head>
-		<title>Big Plan (Version 1.0.3)</title>
+		<title>Big Plan</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="manifest" href="/manifest.json">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat">
-		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 		<style type="text/css">
 			html { background-color: #333; }
 			@media only screen and (min-width: 720px){
