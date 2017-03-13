@@ -19,7 +19,7 @@
 			var current;
 			// Modify add new period popup
 			if(track.currentPeriod !== null) {
-				current = track.ranges[findPreriodById(track.currentPeriod)];
+				current = track.ranges[track.findPreriodById(track.currentPeriod)];
 				showCheckFinishPeriod(1);
 			}
 			// Action of changing date-begin input
@@ -42,10 +42,10 @@
 			$("#form-" + 1).submit(function( event ) {
 				event.preventDefault();
 				if($('#check-finish-i-' + 1).is(':checked') && track.currentPeriod !== null) {
-					removeCurrentPeriod()
+					track.removeCurrentPeriod();
 				}
 				else {
-					updatePeriod($("#date-begin-" + 1).val(), $("#date-end-" + 1).val())
+					track.updatePeriod($("#date-begin-" + 1).val(), $("#date-end-" + 1).val());
 				}
 				location.reload();
 			});

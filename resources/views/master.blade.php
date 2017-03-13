@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}" manifest="/bigplan-manifest.appcache">
 	<head>
-		<title>Big Plan (Version 1.0.2)</title>
+		<title>Big Plan (Version 1.0.3)</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="manifest" href="/manifest.json">
-		<link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat">
 		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 		<style type="text/css">
 			html { background-color: #333; }
 			@media only screen and (min-width: 720px){
@@ -56,6 +56,16 @@
 				border: 0 !important;
 				-webkit-box-shadow: none;
 				box-shadow: none;
+			}
+			.headroom {
+				//will-change: transform;
+				transition: transform 200ms linear;
+			}
+			.headroom--pinned {
+				transform: translateY(0%);
+			}
+			.headroom--unpinned {
+				transform: translateY(-100%);
 			}
 			.highlight.bold {
 				font-weight: bold;
@@ -129,18 +139,26 @@
 				-ms-user-select: none;
 				-o-user-select: none;
 				user-select: none;
-			}			
+			}
 		</style>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script type="text/javascript" src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script type="text/javascript" src="//momentjs.com/downloads/moment.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+		<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="//momentjs.com/downloads/moment.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/jQuery.headroom.min.js"></script>
 	</head>
 	<body>
 		<div data-role="page" id="main-page">
 			@yield('css')
+			<script>
+				$(document).on("pagecreate", function() {
+					// grab an element
+					$(".ui-header").headroom();
+				});
+			</script>
 			@yield('js')
-			<div data-role="header">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-headroom>
 				<a href="#nav-menu" data-icon="custom-bars" data-iconpos="notext" class="ui-nodisc-icon">Menu</a>
 				<h1 class="page-header-left">Big Plan | @yield('title')</h1>
 				@yield('navigator')

@@ -2,8 +2,6 @@
 // Constants
 var PERIOD_RANGES = "period-ranges",
 PERIOD_CURRENT = "period-current";
-
-	
 var track = {
 	TODAY : moment(new Date()).format("YYYY-MM-DD"),
 	// Variables
@@ -32,7 +30,7 @@ if (typeof(Storage) !== "undefined") {
 } else {
 	alert("Sorry! No Web Storage support..");
 }
-function updatePeriod(start,end) {
+track.updatePeriod = function(start,end) {
 	// Set ranges
 	var id = 1;
 	var lastPeriod;
@@ -81,11 +79,11 @@ function updatePeriod(start,end) {
 		}
 	}
 }
-function removeCurrentPeriod() {
+track.removeCurrentPeriod = function() {
 	track.currentPeriod = null;
 	localStorage.removeItem(PERIOD_CURRENT);
 }
-function findPreriodById(id){
+track.findPreriodById = function(id){
 	return track.ranges.findIndex(x => x.id==id);
 }
 function initData() {

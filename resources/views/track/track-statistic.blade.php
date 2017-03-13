@@ -45,7 +45,7 @@
 				$("#stats-shortest-menstruation").html(track.shortestMenstruation);
 			}
 			if(track.currentPeriod !== null) {
-				var current = track.ranges[findPreriodById(track.currentPeriod)],
+				var current = track.ranges[track.findPreriodById(track.currentPeriod)],
 				dateFormat = "DD/MMM/YYYY";
 				$("#stats-current-menstruation").html(moment(current.start).format(dateFormat) + " - " + moment(current.end).format(dateFormat));
 			}
@@ -76,10 +76,10 @@
 			$("#form-" + 2).submit(function( event ) {
 				event.preventDefault();
 				if($('#check-finish-i-' + 1).is(':checked') && track.currentPeriod !== null) {
-					removeCurrentPeriod()
+					track.removeCurrentPeriod();
 				}
 				else {
-					updatePeriod($("#date-begin-" + 2).val(), $("#date-end-" + 2).val())
+					track.updatePeriod($("#date-begin-" + 2).val(), $("#date-end-" + 2).val());
 				}
 				location.reload();
 			});
