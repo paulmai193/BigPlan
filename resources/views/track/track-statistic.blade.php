@@ -46,8 +46,8 @@
 			}
 			if(track.currentPeriod !== null) {
 				var current = track.ranges[track.findPreriodById(track.currentPeriod)],
-				dateFormat = "DD/MMM/YYYY";
-				$("#stats-current-menstruation").html(moment(current.start).format(dateFormat) + " - " + moment(current.end).format(dateFormat));
+				dateFormat = "DD/MMMM/YYYY";
+				$("#stats-current-menstruation").html(moment(current.start).format(dateFormat) + "<br>" + moment(current.end).format(dateFormat));
 			}
 			else {
 				$("#stats-current-menstruation").html("Chưa có");

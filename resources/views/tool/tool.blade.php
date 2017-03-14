@@ -18,8 +18,8 @@
 	</style>
 @stop
 @section('js')
-	<!--<script src="/js/track.min.js"></script>-->
 	<script>
+		var showDateFormat = "DD/MMM/YYYY";
 		function showResult(r, i) {
 			$("#popup-result-content-" + i).empty();
 			$("#popup-result-content-" + i).html(r);
@@ -35,11 +35,21 @@
 			return timeStamp + (24 * 60 * 60) * (period - 11);
 		}
 		function fillLastPeriod(n) {
+			var datepickerOptions = {
+				numberOfMonths: 1,
+				changeMonth: false,				
+				regional: "{{ config('app.locale') }}",
+				onSelect: function(value) {
+					$(this).val(moment(value).format(showDateFormat));
+				}
+			};
 			if(track.ranges.length > 0) {
-				$("#last-time-" + n).val(moment(track.ranges[track.ranges.length - 1].start).format("YYYY-MM-DD"));
+				//$("#last-time-" + n).val(moment(track.ranges[track.ranges.length - 1].start).format("YYYY-MM-DD"));
+				$("#last-time-" + n).datepicker(datepickerOptions).val(moment(track.ranges[track.ranges.length - 1].start))
 			}
 			else {
-				$("#last-time-" + n).val(moment().format("YYYY-MM-DD"));
+				//$("#last-time-" + n).val(moment().format("YYYY-MM-DD"));
+				$("#last-time-" + n).datepicker(datepickerOptions).val(moment().format(showDateFormat));
 			}
 		}
 	</script>

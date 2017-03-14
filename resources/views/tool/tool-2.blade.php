@@ -28,11 +28,11 @@
 			});
 		})
 		function calculate2() {			
-			var timeStamp = moment($("#last-time-2").val()).unix();
+			var timeStamp = moment($("#last-time-2").val(), showDateFormat).unix();
 			var periodShort = $("#period-short").val();
 			var periodLong = $("#period-long").val();
-			var begin = moment.unix(calBegin(timeStamp, periodShort)).format("DD/MMM/YYYY");
-			var end = moment.unix(calEnd(timeStamp, periodLong)).format("DD/MMM/YYYY");
+			var begin = moment.unix(calBegin(timeStamp, periodShort)).format(showDateFormat);
+			var end = moment.unix(calEnd(timeStamp, periodLong)).format(showDateFormat);
 			showResult( "Thời gian có thể thụ thai:<br>" + begin + " - " + end, 2 );
 		}
 	</script>
@@ -57,7 +57,7 @@
 @section('form')
 	<form id="form-2">
 		<label>Ngày bắt đầu gần nhất</label>
-		<input name="last-time" id="last-time-2" type="date" required>
+		<input name="last-time" id="last-time-2" type="text" required>
 		<br>
 		<label for="period-short">Chu kỳ ngắn nhất</label>
 		<input type="range" name="period-short" id="period-short" value="18" min="18" max="45" data-mini="false" data-highlight="true" required>
