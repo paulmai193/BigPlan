@@ -18,7 +18,7 @@
 	</style>
 @stop
 @section('js')
-	<script src="/js/track.min.js"></script>
+	<!--<script src="/js/track.min.js"></script>-->
 	<script>
 		function showResult(r, i) {
 			$("#popup-result-content-" + i).empty();

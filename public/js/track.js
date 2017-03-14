@@ -1,9 +1,9 @@
 'use strict';
 // Constants
-var PERIOD_RANGES = "period-ranges",
-PERIOD_CURRENT = "period-current";
+var PERIOD_RANGES = ('period-ranges'),
+PERIOD_CURRENT = ('period-current');
 var track = {
-	TODAY : moment(new Date()).format("YYYY-MM-DD"),
+	TODAY : moment(new Date()).format('YYYY-MM-DD'),
 	// Variables
 	ranges : null,
 	currentPeriod : null,
@@ -13,7 +13,7 @@ var track = {
 	longestMenstruation : 0,
 };
 // Load period dates from local storage
-if (typeof(Storage) !== "undefined") {
+if (typeof(Storage) !== 'undefined') {
 	track.ranges = localStorage.getItem(PERIOD_RANGES);
 	if(track.ranges === null) {
 		track.ranges = []
@@ -28,7 +28,7 @@ if (typeof(Storage) !== "undefined") {
 		track.currentPeriod = +(track.currentPeriod);
 	}
 } else {
-	alert("Sorry! No Web Storage support..");
+	alert('Sorry! No Web Storage support..');
 }
 track.updatePeriod = function(start,end) {
 	// Set ranges
@@ -42,12 +42,12 @@ track.updatePeriod = function(start,end) {
 		// If current period is set, update this period start / end time
 		id = track.currentPeriod;
 		var i = track.findPreriodById(id);
-		if(end === "") {
+		if(end === '') {
 			// In case user just enter start day, that mean set it into end day
 			end = start;
 			start = track.ranges[i].start;
 		}
-		track.ranges[i] = {"id": id, "start": start, "end": end};
+		track.ranges[i] = {'id': id, 'start': start, 'end': end};
 	}
 	else {
 		var i = track.findPeriodByStartDay(start);
@@ -55,7 +55,7 @@ track.updatePeriod = function(start,end) {
 			start = track.ranges[i].start;
 			id = track.ranges[i].id;
 		}
-		if(end === "") {
+		if(end === '') {
 			// In case user just enter start day, that mean start = end day
 			end = start;
 		}
@@ -64,20 +64,20 @@ track.updatePeriod = function(start,end) {
 			// Set this id to current
 			track.currentPeriod = id;
 		}
-		track.ranges.push({"id": id, "start": start, "end": end});
+		track.ranges.push({'id': id, 'start': start, 'end': end});
 	}
 	// Statistic
-	if(typeof(lastPeriod) !== "undefined") {
-		var delta = moment(start).diff(moment(lastPeriod.start), "days");
-		if(track.shortestPeriod === "" || track.shortestPeriod > delta) {
+	if(typeof(lastPeriod) !== 'undefined') {
+		var delta = moment(start).diff(moment(lastPeriod.start), 'days');
+		if(track.shortestPeriod === '' || track.shortestPeriod > delta) {
 			track.shortestPeriod = delta;
 		}
-		if(track.longestPeriod === "" || track.longestPeriod < delta) {
+		if(track.longestPeriod === '' || track.longestPeriod < delta) {
 			track.longestPeriod = delta;
 		}
 	}
 	// Save to localStorage
-	if (typeof(Storage) !== "undefined") {
+	if (typeof(Storage) !== 'undefined') {
 		localStorage.setItem(PERIOD_RANGES, JSON.stringify(track.ranges));
 		if(track.currentPeriod !== null) {
 			localStorage.setItem(PERIOD_CURRENT, track.currentPeriod);
@@ -101,9 +101,9 @@ track.findPeriodByStartDay = function(startDay){
 function initData() {
 	var target;
 	$.each(track.ranges, function(k,v) {
-		if(typeof(target) !== "undefined") {
+		if(typeof(target) !== 'undefined') {
 			// Get shortest/longest period
-			var delta = moment(v.start).diff(moment(target), "days");
+			var delta = moment(v.start).diff(moment(target), 'days');
 			if(track.shortestPeriod > delta) {
 				track.shortestPeriod = delta;
 			}
@@ -112,7 +112,7 @@ function initData() {
 			}			
 		}
 		// Get shortest/longest menstruation
-		delta = moment(v.end).diff(moment(v.start), "days") + 1;
+		delta = moment(v.end).diff(moment(v.start), 'days') + 1;
 		if(track.shortestMenstruation > delta) {
 			track.shortestMenstruation = delta;
 		}

@@ -14,7 +14,10 @@
 	</style>
 @stop
 @section('js-1')
-	<script src="/js/track-calendar.min.js"></script>
+	<!--<script src="/js/track-calendar.min.js"></script>-->
+	<script>
+		$(document).on("pagecreate",function(){var a;null!==track.currentPeriod&&(a=track.ranges[track.findPreriodById(track.currentPeriod)],showCheckFinishPeriod(1)),$("#date-begin-1").change(function(){updateCondition(1)}),$("#more-input-a-1").on("tap",function(){showMoreOptions(1)}),$("#btn-close-1").on("tap",function(){closePopup(1)}),$("#check-finish-i-1").click(function(){hidePopupInput(this,1)}),$("#form-1").submit(function(a){a.preventDefault(),$("#check-finish-i-1").is(":checked")&&null!==track.currentPeriod?track.removeCurrentPeriod():track.updatePeriod($("#date-begin-1").val(),$("#date-end-1").val()),location.reload()});var b={numberOfMonths:1,dateFormat:"yy-mm-dd",changeMonth:!1},c=b;c.beforeShowDay=function(b){for(var b=moment(b).format("YYYY-MM-DD"),c=0;c<track.ranges.length;c++)if(b>=track.ranges[c].start&&b<=track.ranges[c].end)return"undefined"!=typeof a&&a.id===track.ranges[c].id?[!0,"ui-state-current","Ngày hành kinh"]:[!0,"ui-state-highlight","Ngày hành kinh"];return[!0,""]};var d=b;d.defaultDate="+1w",$("#period-calendar").datepicker(c)});
+	</script>
 @stop
 @section('navigator')
 	<div data-role="navbar">
