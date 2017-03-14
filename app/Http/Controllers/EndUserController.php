@@ -36,4 +36,8 @@ class EndUserController extends Controller {
 	public function viewTrackStatistic() {
 		return view("track/track-statistic");
 	}
+	
+	public function viewTrackAdd() {
+		return view("track/track-add");
+	}
 }

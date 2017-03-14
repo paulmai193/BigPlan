@@ -29,6 +29,7 @@
 @section('js')
 	<!--<script src="/js/track.min.js"></script>-->
 	<script>
+		var showDateFormat = "DD/MMM/YYYY";
 		function showCheckFinishPeriod(n) {
 			// Show close current period option
 			$("#check-finish-d-" + n).removeAttr("hidden");

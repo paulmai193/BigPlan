@@ -16,7 +16,23 @@
 @section('js-1')
 	<!--<script src="/js/track-calendar.min.js"></script>-->
 	<script>
-		$(document).on("pagecreate",function(){var a;null!==track.currentPeriod&&(a=track.ranges[track.findPreriodById(track.currentPeriod)],showCheckFinishPeriod(1)),$("#date-begin-1").change(function(){updateCondition(1)}),$("#more-input-a-1").on("tap",function(){showMoreOptions(1)}),$("#btn-close-1").on("tap",function(){closePopup(1)}),$("#check-finish-i-1").click(function(){hidePopupInput(this,1)}),$("#form-1").submit(function(a){a.preventDefault(),$("#check-finish-i-1").is(":checked")&&null!==track.currentPeriod?track.removeCurrentPeriod():track.updatePeriod($("#date-begin-1").val(),$("#date-end-1").val()),location.reload()});var b={numberOfMonths:1,dateFormat:"yy-mm-dd",changeMonth:!1},c=b;c.beforeShowDay=function(b){for(var b=moment(b).format("YYYY-MM-DD"),c=0;c<track.ranges.length;c++)if(b>=track.ranges[c].start&&b<=track.ranges[c].end)return"undefined"!=typeof a&&a.id===track.ranges[c].id?[!0,"ui-state-current","Ngày hành kinh"]:[!0,"ui-state-highlight","Ngày hành kinh"];return[!0,""]};var d=b;d.defaultDate="+1w",$("#period-calendar").datepicker(c)});
+		$(document).on("pagecreate", function() {
+			var a;
+			null !== track.currentPeriod && (a = track.ranges[track.findPreriodById(track.currentPeriod)]);
+			var b = {
+					numberOfMonths: 1,
+					//dateFormat: "yy-mm-dd",
+					changeMonth: 1,
+					regional: "vi-VN",
+				},
+				c = b;
+			c.beforeShowDay = function(b) {
+				for (var b = moment(b).format("YYYY-MM-DD"), c = 0; c < track.ranges.length; c++)
+					if (b >= track.ranges[c].start && b <= track.ranges[c].end) return "undefined" != typeof a && a.id === track.ranges[c].id ? [!0, "ui-state-current", "Ngày hành kinh"] : [!0, "ui-state-highlight", "Ngày hành kinh"];
+				return [!0, ""]
+			};
+			$("#period-calendar").datepicker(c)
+		});
 	</script>
 @stop
 @section('navigator')
@@ -38,40 +54,9 @@
 		<div class="ui-grid-b">
 			<div class="ui-block-a"></div>
 			<div class="ui-block-b" center>
-				<a href="#popup-add-1" data-rel="popup" data-transition="slideup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-nodisc-icon ui-icon-custom-add" id="open-popup-add"></a>
+				<a href="calendar/add" data-transition="slideup" data-position-to="window" class="ui-btn ui-btn-icon-top ui-nodisc-icon ui-icon-custom-add" id="open-popup-add"></a>
 			</div>
 			<div class="ui-block-c"></div>
-		</div>
-		<!-- Add new period popup -->
-		<div data-role="popup" id="popup-add-1">
-			<form data-role="content" class="popup" id="form-1">
-				<div id="check-finish-d-1" hidden>
-					<label>
-						<input type="checkbox" name="check-finish" id="check-finish-i-1">Kết thúc chu kỳ
-					</label>					
-				</div>
-				<label for="date-begin" id="lb-begin-1">Ngày</label>
-				<input name="date-begin" id="date-begin-1" type="date" value="<?php echo date('Y-m-d') ?>" required>
-				<!--<input name="date-begin" id="date-begin" type="text" data-role="date">-->
-				<div id="more-input-d-1" hidden>
-					<label for="date-end" id="lb-end-1">Đến ngày</label>
-					<input name="date-end" id="date-end-1" type="date" novalidate>
-					<!--<input name="date-end" id="date-end" type="text" data-role="date">-->
-				</div>	
-				<div>
-					<a href="#" id="more-input-a-1">Mở rộng</a>
-				</div>
-				<div class="ui-grid-a center">
-					<div class="ui-block-a">
-						<!--<a href="#" class="ui-btn ui-icon-check ui-btn-icon-left">Đồng ý</a>-->
-						<input type="submit" class="ui-icon-check ui-btn-icon-left" value="Đồng ý">
-					</div>
-					<div class="ui-block-b">
-						<!--<a href="#" data-rel="back" class="ui-btn ui-icon-delete ui-btn-icon-left">Hủy bỏ</a>-->
-						<input type="button" class="ui-icon-delete ui-btn-icon-left" value="Hủy bỏ" id="btn-close-1">
-					</div>
-				</div>
-			</form>
 		</div>
 	</div>
 @stop

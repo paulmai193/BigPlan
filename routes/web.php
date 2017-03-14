@@ -24,3 +24,7 @@ Route::get("/faq", "EndUserController@viewFaq");
 Route::get("/track/calendar", "EndUserController@viewTrackCalendar")->name('login');
 
 Route::get("/track/statistic", "EndUserController@viewTrackStatistic")->name('login');
+
+Route::get("/track/calendar/add", "EndUserController@viewTrackAdd")->name('login');
+
+Route::get("/track/statistic/add", "EndUserController@viewTrackAdd")->name('login');

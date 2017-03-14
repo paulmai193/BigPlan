@@ -37,18 +37,16 @@
 		function fillLastPeriod(n) {
 			var datepickerOptions = {
 				numberOfMonths: 1,
-				changeMonth: false,				
-				regional: "{{ config('app.locale') }}",
+				changeMonth: 1,				
+				regional: "vi-VN",
 				onSelect: function(value) {
 					$(this).val(moment(value).format(showDateFormat));
 				}
 			};
 			if(track.ranges.length > 0) {
-				//$("#last-time-" + n).val(moment(track.ranges[track.ranges.length - 1].start).format("YYYY-MM-DD"));
 				$("#last-time-" + n).datepicker(datepickerOptions).val(moment(track.ranges[track.ranges.length - 1].start))
 			}
 			else {
-				//$("#last-time-" + n).val(moment().format("YYYY-MM-DD"));
 				$("#last-time-" + n).datepicker(datepickerOptions).val(moment().format(showDateFormat));
 			}
 		}
