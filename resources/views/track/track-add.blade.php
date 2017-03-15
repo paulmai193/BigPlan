@@ -180,7 +180,7 @@
 						<input type="submit" class="ui-icon-check ui-btn-icon-left" value="Đồng ý">
 					</div>
 					<div class="ui-block-b">
-						<a href="#" data-rel="back" class="ui-btn ui-nodisc-icon">Hủy bỏ</a>
+						<a href="#" data-rel="back" class="ui-btn ui-nodisc-icon ui-corner-all">Hủy bỏ</a>
 					</div>
 				</div>
 			</form>
