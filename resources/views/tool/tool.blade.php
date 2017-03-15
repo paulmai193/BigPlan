@@ -37,14 +37,14 @@
 		function fillLastPeriod(n) {
 			var datepickerOptions = {
 				numberOfMonths: 1,
-				changeMonth: 1,				
-				regional: "vi-VN",
+				changeMonth: 0,				
+				regional: "{{ config('app.locale') }}",
 				onSelect: function(value) {
 					$(this).val(moment(value).format(showDateFormat));
 				}
 			};
 			if(track.ranges.length > 0) {
-				$("#last-time-" + n).datepicker(datepickerOptions).val(moment(track.ranges[track.ranges.length - 1].start))
+				$("#last-time-" + n).datepicker(datepickerOptions).val(moment(track.ranges[track.ranges.length - 1].start).format(showDateFormat))
 			}
 			else {
 				$("#last-time-" + n).datepicker(datepickerOptions).val(moment().format(showDateFormat));
