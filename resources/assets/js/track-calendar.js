@@ -7,6 +7,12 @@ $(document).on("pagecreate", function() {
 		regional: "{{ config('app.locale') }}",
 		onSelect: function(value) {
 			$(this).val(moment(value, defaultDatepickerFormat).format(showDateFormat));
+		},
+		beforeShow:function(input) {
+			$(input).css({
+				"position": "relative",
+				"z-index": 999999
+			});
 		}
 	};
 	var periodCalendarOptions = mainOptions;

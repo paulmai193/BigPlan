@@ -14,6 +14,10 @@ var track = {
 };
 // Load period dates from local storage
 if (typeof(Storage) !== 'undefined') {
+	track.currentPeriod = localStorage.getItem(PERIOD_CURRENT);
+	if(track.currentPeriod !== null) {
+		track.currentPeriod = +(track.currentPeriod);
+	}
 	track.ranges = localStorage.getItem(PERIOD_RANGES);
 	if(track.ranges === null) {
 		track.ranges = []
@@ -23,11 +27,8 @@ if (typeof(Storage) !== 'undefined') {
 		sortData(track.ranges);
 		initData();
 	}
-	track.currentPeriod = localStorage.getItem(PERIOD_CURRENT);
-	if(track.currentPeriod !== null) {
-		track.currentPeriod = +(track.currentPeriod);
-	}
-} else {
+} 
+else {
 	alert('Sorry! No Web Storage support..');
 }
 track.updatePeriod = function(start,end) {
@@ -118,12 +119,14 @@ function initData() {
 			}			
 		}
 		// Get shortest/longest menstruation
-		delta = moment(v.end).diff(moment(v.start), 'days') + 1;
-		if(track.shortestMenstruation > delta) {
-			track.shortestMenstruation = delta;
-		}
-		if(track.longestMenstruation < delta) {
-			track.longestMenstruation = delta;
+		if(v.id !== track.currentPeriod) {
+			delta = moment(v.end).diff(moment(v.start), 'days') + 1;
+			if(track.shortestMenstruation > delta) {
+				track.shortestMenstruation = delta;
+			}
+			if(track.longestMenstruation < delta) {
+				track.longestMenstruation = delta;
+			}
 		}
 		// Replace target
 		target = v.start;		
