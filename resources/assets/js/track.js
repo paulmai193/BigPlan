@@ -24,7 +24,6 @@ if (typeof(Storage) !== 'undefined') {
 	}
 	else {
 		track.ranges = JSON.parse(track.ranges);
-		sortData(track.ranges);
 		initData();
 	}
 } 
@@ -107,7 +106,7 @@ track.findPeriodByStartDay = function(startDay){
 }
 function initData() {
 	var target;
-	$.each(track.ranges, function(k,v) {
+	$.each(sortData(track.ranges), function(k,v) {
 		if(typeof(target) !== 'undefined') {
 			// Get shortest/longest period
 			var delta = moment(v.start).diff(moment(target), 'days');
@@ -133,7 +132,8 @@ function initData() {
 	});
 }
 function sortData(ranges) {
-	ranges.sort(function(a,b) {
+	var tmpRanges = ranges.slice();
+	tmpRanges.sort(function(a,b) {
 		if(a.start > b.start){ 
 			return 1;
 		}
@@ -142,4 +142,5 @@ function sortData(ranges) {
 		}
 		return 0;
 	});
+	return tmpRanges;
 }

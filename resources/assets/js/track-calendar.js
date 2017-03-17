@@ -5,9 +5,6 @@ $(document).on("pagecreate", function() {
 		numberOfMonths: 1,
 		changeMonth: false,
 		regional: "{{ config('app.locale') }}",
-		onSelect: function(value) {
-			$(this).val(moment(value, defaultDatepickerFormat).format(showDateFormat));
-		},
 		beforeShow:function(input) {
 			$(input).css({
 				"position": "relative",
@@ -33,12 +30,12 @@ $(document).on("pagecreate", function() {
 	};
 	var pickupBeginOptions = periodCalendarOptions;
 	pickupBeginOptions["onSelect"] = function(value) {
-		$("#date-end").datepicker("option", "minDate", value);
+		$("#date-end").datepicker("option", "minDate", value).val(moment(value, defaultDatepickerFormat).format(showDateFormat));
 		$(this).val(moment(value, defaultDatepickerFormat).format(showDateFormat));
 	}
 	$("#date-begin").datepicker(pickupBeginOptions)
 	.on("input change", function(e) {
-		$("#date-end").datepicker("option", "minDate", value);
+		$("#date-end").datepicker("option", "minDate", value).val(moment(value, defaultDatepickerFormat).format(showDateFormat));
 	})
 	.val(moment().format(showDateFormat));
 	
