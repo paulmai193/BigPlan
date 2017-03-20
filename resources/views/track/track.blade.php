@@ -27,7 +27,6 @@
 	@yield('css-1')
 @stop
 @section('js')
-	<!--<script src="/js/track.min.js"></script>-->
 	<script>
 		var showDateFormat = "DD/MMM/YYYY";
 		function showCheckFinishPeriod(n) {

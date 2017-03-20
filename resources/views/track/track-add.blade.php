@@ -152,10 +152,8 @@
 		<script>
 			// Global setting for MomentJS Locale
 			moment.locale("{{ config('app.locale') }}")
-			
-			// Track tool
-			"use strict";function initData(){var a;$.each(sortData(track.ranges),function(b,c){if("undefined"!=typeof a){var d=moment(c.start).diff(moment(a),"days");track.shortestPeriod>d&&(track.shortestPeriod=d),track.longestPeriod<d&&(track.longestPeriod=d)}c.id!==track.currentPeriod&&(d=moment(c.end).diff(moment(c.start),"days")+1,track.shortestMenstruation>d&&(track.shortestMenstruation=d),track.longestMenstruation<d&&(track.longestMenstruation=d)),a=c.start})}function sortData(a){var b=a.slice();return b.sort(function(a,b){return a.start>b.start?1:a.start<b.start?-1:0}),b}var PERIOD_RANGES=("period-ranges"),PERIOD_CURRENT=("period-current"),track={TODAY:moment(new Date).format("YYYY-MM-DD"),ranges:null,currentPeriod:null,shortestPeriod:46,longestPeriod:0,shortestMenstruation:21,longestMenstruation:0};"undefined"!=typeof Storage?(track.currentPeriod=localStorage.getItem(PERIOD_CURRENT),null!==track.currentPeriod&&(track.currentPeriod=+track.currentPeriod),track.ranges=localStorage.getItem(PERIOD_RANGES),null===track.ranges?track.ranges=[]:(track.ranges=JSON.parse(track.ranges),initData())):alert("Sorry! No Web Storage support.."),track.updatePeriod=function(a,b){var d,c=1;if(track.ranges.length>0&&(d=track.ranges[track.ranges.length-1],c=d.id+1),null!==track.currentPeriod){c=track.currentPeriod;var e=track.findPreriodById(c);""===b&&(b=a,a=track.ranges[e].start),track.ranges[e]={id:c,start:a,end:b}}else{var e=track.findPeriodByStartDay(a);e>-1&&(a=track.ranges[e].start,c=track.ranges[e].id),""===b&&(b=a),track.TODAY>=a&&track.TODAY<=b&&(track.currentPeriod=c),e>-1?track.ranges[e]={id:c,start:a,end:b}:track.ranges.push({id:c,start:a,end:b})}if("undefined"!=typeof d){var f=moment(a).diff(moment(d.start),"days");(""===track.shortestPeriod||track.shortestPeriod>f)&&(track.shortestPeriod=f),(""===track.longestPeriod||track.longestPeriod<f)&&(track.longestPeriod=f)}"undefined"!=typeof Storage&&(localStorage.setItem(PERIOD_RANGES,JSON.stringify(track.ranges)),null!==track.currentPeriod&&localStorage.setItem(PERIOD_CURRENT,track.currentPeriod))},track.removeCurrentPeriod=function(){track.currentPeriod=null,localStorage.removeItem(PERIOD_CURRENT)},track.findPreriodById=function(a){return track.ranges.findIndex(function(b){return b.id==a})},track.findPeriodByStartDay=function(a){return track.ranges.findIndex(function(b){return b.start==a})};
 		</script>
+		<script src="{{ URL::asset('/js/track.js') }}"></script>
 	</head>
 	<body>
 		<!-- Add new period dialog -->
@@ -168,65 +166,23 @@
 				</div>
 				<label for="date-begin" id="lb-begin">Ngày</label>
 				<input name="date-begin" id="date-begin" type="text" value="<?php echo date('Y-m-d') ?>" required>
-				<!--<input name="date-begin" id="date-begin" type="text" data-role="date">-->
 				<div id="more-input-d" hidden>
 					<label for="date-end" id="lb-end">Đến ngày</label>
 					<input name="date-end" id="date-end" type="text" novalidate>
-					<!--<input name="date-end" id="date-end" type="text" data-role="date">-->
 				</div>	
 				<div>
 					<a href="#" id="more-input-a">Mở rộng</a>
 				</div>
 				<div class="ui-grid-a center">
-					<div class="ui-block-a">
-						<!--<a href="#" class="ui-btn ui-icon-check ui-btn-icon-left">Đồng ý</a>-->
-						<input type="submit" class="ui-icon-check ui-btn-icon-left" value="Đồng ý">
+					<div class="ui-block-a" id="zone-submit">
+						<input type="submit" class="ui-icon-check ui-btn-icon-left" value="Thêm" id="btn-submit">
 					</div>
 					<div class="ui-block-b">
 						<a href="#" data-rel="back" class="ui-btn ui-nodisc-icon ui-corner-all">Hủy bỏ</a>
 					</div>
 				</div>
 			</form>
-			<script>
-				$(document).on("pagecreate", function() {
-					var showDateFormat = "DD/MMM/YYYY",
-						saveDateFormat = "YYYY-MM-DD",
-						defaultDatepickerFormat = "DD/MM/YYYY",
-						mainOptions = {
-							numberOfMonths: 1,
-							changeMonth: !1,
-							regional: "{{ config('app.locale') }}",
-							beforeShow: function(a) {
-								$(a).css({
-									position: "relative",
-									"z-index": 999999
-								})
-							}
-						},
-						periodCalendarOptions = mainOptions;
-					periodCalendarOptions.beforeShowDay = function(a) {
-						for (var a = moment(a, defaultDatepickerFormat).format(saveDateFormat), b = 0; b < track.ranges.length; b++)
-							if (a >= track.ranges[b].start && a <= track.ranges[b].end) return "undefined" != typeof current && current.id === track.ranges[b].id ? [!0, "ui-state-current", "Ngày hành kinh"] : [!0, "ui-state-highlight", "Ngày hành kinh"];
-						return [!0, ""]
-					};
-					var pickupBeginOptions = periodCalendarOptions;
-					pickupBeginOptions.onSelect = function(a) {
-						$("#date-end").datepicker("option", "minDate", a).val(moment(a, defaultDatepickerFormat).format(showDateFormat)), $(this).val(moment(a, defaultDatepickerFormat).format(showDateFormat))
-					}, $("#date-begin").datepicker(pickupBeginOptions).on("input change", function(a) {
-						$("#date-end").datepicker("option", "minDate", value).val(moment(value, defaultDatepickerFormat).format(showDateFormat))
-					}).val(moment().format(showDateFormat));
-					var pickupEndOptions = periodCalendarOptions;
-					$("#date-end").datepicker(pickupEndOptions).val(moment().format(showDateFormat));
-					var current;
-					null !== track.currentPeriod && (current = track.ranges[track.findPreriodById(track.currentPeriod)], $("#check-finish-d").removeAttr("hidden")), $("#more-input-a").on("tap", function() {
-						$("#lb-begin").empty(), $("#lb-begin").append("Từ ngày"), $("#date-end").val($("#date-begin").val()), $("#more-input-d").removeAttr("hidden"), $("#date-end").removeAttr("novalidate"), $("#date-end").prop("required", !0), $("#more-input-a").prop("hidden", !0)
-					}), $("#check-finish-i").click(function() {
-						$("#more-input-a").toggle(!this.checked), $("#lb-begin").toggle(!this.checked), $("#date-begin").toggle(!this.checked), $("#lb-end").toggle(!this.checked), $("#date-end").toggle(!this.checked)
-					}), $("#form").submit(function(a) {
-						a.preventDefault(), $("#check-finish-i-1").is(":checked") && null !== track.currentPeriod ? track.removeCurrentPeriod() : track.updatePeriod(moment($("#date-begin").val(), showDateFormat).format(saveDateFormat), "" !== $("#date-end").val() ? moment($("#date-end").val(), showDateFormat).format(saveDateFormat) : ""), location.reload()
-					});
-				});
-			</script>
+			<script src="{{ URL::asset('/js/track-calendar.js') }}"></script>
 		</div>
 	</body>
 </html>

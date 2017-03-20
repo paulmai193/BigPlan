@@ -1,4 +1,4 @@
-$(document).on("pagecreate", function() {
+$(document).on("pagebeforecreate", function() {
 	var showDateFormat = "DD/MMM/YYYY", saveDateFormat = "YYYY-MM-DD", defaultDatepickerFormat = "DD/MM/YYYY";
 	// Period calendar
 	var mainOptions = {
@@ -48,6 +48,7 @@ $(document).on("pagecreate", function() {
 		current = track.ranges[track.findPreriodById(track.currentPeriod)];
 		// Show close current period option
 		$("#check-finish-d").removeAttr("hidden");
+		$("#btn-submit").val("Cập nhật");
 	}
 	// Action of tapping to more-input-a button
 	$("#more-input-a").on("tap", function() {
@@ -70,7 +71,7 @@ $(document).on("pagecreate", function() {
 	// Action of submit update period form event
 	$("#form").submit(function( event ) {
 		event.preventDefault();
-		if($("#check-finish-i-" + 1).is(":checked") && track.currentPeriod !== null) {
+		if($("#check-finish-i").is(":checked") && track.currentPeriod !== null) {
 			track.removeCurrentPeriod();
 		}
 		else {
@@ -78,7 +79,6 @@ $(document).on("pagecreate", function() {
 		}
 		location.reload();
 	});
-	
 	
 	// Prepare UI
 	$("#period-calendar").datepicker(periodCalendarOptions).val(moment().format(showDateFormat));

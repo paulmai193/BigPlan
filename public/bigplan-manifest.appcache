@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#v1.0.12
+#v1.0.13
 
 ## Library of project/
 /manifest.json
@@ -13,6 +13,10 @@ CACHE MANIFEST
 /track/calendar/add
 /track/statistic/add
 /faq
+/js/track.js
+/js/track-calendar.js
+/js/track.js
+/css/core.css
 
 //fonts.googleapis.com/css?family=Montserrat
 //fonts.gstatic.com/s/montserrat/v10/SKK6Nusyv8QPNMtI4j9J2yEAvth_LlrfE80CYdSH47w.woff2
@@ -25,8 +29,10 @@ CACHE MANIFEST
 //code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
 //code.jquery.com/mobile/1.4.5/images/ajax-loader.gif 
 //momentjs.com/downloads/moment.min.js
+//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/vi.js
 //cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js
 //cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/jQuery.headroom.min.js
+
 
 NETWORK:
 *
