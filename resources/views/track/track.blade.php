@@ -4,7 +4,7 @@
 	@yield('css-1')
 @stop
 @section('js')
-	<script src="{{ URL::asset('/js/track.ob.js.gz') }}"></script>
+	<script src="{{ URL::asset('/js/track.ob.js') }}"></script>
 	@yield('js-1')
 @stop
 @section('title', 'Theo dõi chu kỳ')

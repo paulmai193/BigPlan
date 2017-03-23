@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="/css/tool.min.css">
 @stop
 @section('js')
-	<script src="{{ URL::asset('/js/tool.ob.js.gz') }}"></script>
+	<script src="{{ URL::asset('/js/tool.ob.js') }}"></script>
 	@yield('js-1')
 @stop
 @section('title', 'Tính thời gian thụ thai')

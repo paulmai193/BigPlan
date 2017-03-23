@@ -1,6 +1,6 @@
 @extends('tool.tool')
 @section('js-1')
-	<script src="{{ URL::asset('/js/tool-2.ob.js.gz') }}"></script>
+	<script src="{{ URL::asset('/js/tool-2.ob.js') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">

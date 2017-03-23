@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="/css/track-statistic.min.css">
 @stop
 @section('js-1')
-	<script src="{{ URL::asset('/js/track-statistic.ob.js.gz') }}"></script>
+	<script src="{{ URL::asset('/js/track-statistic.ob.js') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">

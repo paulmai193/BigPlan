@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="/css/track-calendar.min.css">
 @stop
 @section('js-1')
-	<script src="{{ URL::asset('/js/track-calendar.ob.js.gz') }}"></script>
+	<script src="{{ URL::asset('/js/track-calendar.ob.js') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">

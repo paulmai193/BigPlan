@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="/css/core.min.css.gz">
+		<link rel="stylesheet" href="/css/core.min.css">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 		<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -32,7 +32,7 @@
 			
 			jQuery.ajaxSetup({cache:true});
 		</script>
-		<script src="{{ URL::asset('/js/core.min.js.gz') }}"></script>
+		<script src="{{ URL::asset('/js/core.min.js') }}"></script>
 	</head>
 	<body>
 		<!-- Add new period dialog -->
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</form>
-			<script src="{{ URL::asset('/js/track-add.ob.js.gz') }}"></script>
+			<script src="{{ URL::asset('/js/track-add.ob.js') }}"></script>
 		</div>
 	</body>
 </html>
