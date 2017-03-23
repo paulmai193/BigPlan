@@ -1,38 +1,9 @@
 @extends('track.track')
 @section('css-1')
-	<style>
-		#period-calendar {
-			display: inline-block;
-			margin: 0 auto;
-		}
-		.ui-state-highlight .ui-state-default {
-			background-color: #ffe4e1;
-		}
-		.ui-state-current .ui-state-default {
-			background-color: #ffc0cb;
-		}
-	</style>
+	<link rel="stylesheet" href="/css/track-calendar.min.css">
 @stop
 @section('js-1')
-	<!--<script src="/js/track-calendar.min.js"></script>-->
-	<script>
-		$(document).on("pagecreate", function() {
-			var a;
-			null !== track.currentPeriod && (a = track.ranges[track.findPreriodById(track.currentPeriod)]);
-			var b = {
-					numberOfMonths: 1,
-					changeMonth: 0,
-					regional: "{{ config('app.locale') }}",
-				},
-				c = b;
-			c.beforeShowDay = function(b) {
-				for (var b = moment(b).format("YYYY-MM-DD"), c = 0; c < track.ranges.length; c++)
-					if (b >= track.ranges[c].start && b <= track.ranges[c].end) return "undefined" != typeof a && a.id === track.ranges[c].id ? [!0, "ui-state-current", "Ngày hành kinh"] : [!0, "ui-state-highlight", "Ngày hành kinh"];
-				return [!0, ""]
-			};
-			$("#period-calendar").datepicker(c).val(new Date())
-		});
-	</script>
+	<script src="{{ URL::asset('/js/track-calendar.ob.js.gz') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">

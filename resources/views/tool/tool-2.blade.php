@@ -1,41 +1,6 @@
 @extends('tool.tool')
 @section('js-1')
-	<script>
-		$(document).on("pagecreate", function() {
-			fillLastPeriod(2);
-			var min = track.shortestPeriod === 46 ? 30 : track.shortestPeriod > 18 ? track.shortestPeriod : 18;
-			$("#period-short").val(min).slider("refresh");;
-			if(min < track.longestPeriod) {
-				$("#period-long").attr("min", min).val(track.longestPeriod).slider("refresh");;
-			}
-			else {
-				$("#period-long").attr("min", min).val(min).slider("refresh");;
-			}
-			
-			$(document).on("change", "#period-short", function(){
-				var min = $("#period-short").val();
-				var max = $("#period-long").val();
-				if(min > max) {
-					$("#period-long").attr("min", min).val(min).slider("refresh");
-				}
-				else {
-					$("#period-long").attr("min", min).slider("refresh");
-				}
-			});
-			$("#form-2").submit(function(e) {
-				e.preventDefault();
-				calculate2();				
-			});
-		})
-		function calculate2() {			
-			var timeStamp = moment($("#last-time-2").val(), showDateFormat).unix();
-			var periodShort = $("#period-short").val();
-			var periodLong = $("#period-long").val();
-			var begin = moment.unix(calBegin(timeStamp, periodShort)).format(showDateFormat);
-			var end = moment.unix(calEnd(timeStamp, periodLong)).format(showDateFormat);
-			showResult( "Thời gian có thể thụ thai:<br>" + begin + " - " + end, 2 );
-		}
-	</script>
+	<script src="{{ URL::asset('/js/tool-2.ob.js.gz') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">
@@ -57,7 +22,7 @@
 @section('form')
 	<form id="form-2">
 		<label>Ngày bắt đầu gần nhất</label>
-		<input name="last-time" id="last-time-2" type="text" required>
+		<input name="last-time" id="last-time-2" type="text" autocomplete="off" required>
 		<br>
 		<label for="period-short">Chu kỳ ngắn nhất</label>
 		<input type="range" name="period-short" id="period-short" value="18" min="18" max="45" data-mini="false" data-highlight="true" required>

@@ -1,22 +1,6 @@
 @extends('tool.tool')
 @section('js-1')
-	<script>
-		$(document).on("pagecreate", function() {
-			fillLastPeriod(1);
-			$("#period").val(track.shortestPeriod === 46 ? 30 : track.shortestPeriod > 18 ? track.shortestPeriod : 18).slider("refresh");;
-			$("#form-1").submit(function(event) {
-				event.preventDefault();
-				calculate1();				
-			});
-		})
-		function calculate1() {
-			var timeStamp = moment($("#last-time-1").val(), showDateFormat).unix();
-			var period = $("#period").val();
-			var begin = moment.unix(calBegin(timeStamp, period)).format(showDateFormat);
-			var end = moment.unix(calEnd(timeStamp, period)).format(showDateFormat);
-			showResult( "Thời gian có thể thụ thai:<br>" + begin + " - " + end, 1 );
-		}
-	</script>
+	<script src="{{ URL::asset('/js/tool-1.ob.js.gz') }}"></script>
 @stop
 @section('navigator')
 	<div data-role="navbar">
@@ -37,7 +21,7 @@
 @section('form')
 	<form id="form-1">
 		<label>Ngày bắt đầu gần nhất</label>
-		<input name="last-time" id="last-time-1" type="text" required>
+		<input name="last-time" id="last-time-1" type="text" autocomplete="off" required>
 		<br>
 		<label for="period">Chu kỳ</label>
 		<input type="range" name="period" id="period" value="18" min="18" max="45" data-mini="false" data-highlight="true" required>

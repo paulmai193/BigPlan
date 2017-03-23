@@ -1,0 +1,12 @@
+tr {
+	border-bottom: 1px solid lightgray;
+}
+td {
+	vertical-align: middle !important;
+}
+th.justify {
+	width: 30%;
+}
+.ui-table-columntoggle-btn {
+	display: none !important;
+}

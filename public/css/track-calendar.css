@@ -1,0 +1,10 @@
+#period-calendar {
+	display: inline-block;
+	margin: 0 auto;
+}
+.ui-state-highlight .ui-state-default {
+	background-color: #ffe4e1;
+}
+.ui-state-current .ui-state-default {
+	background-color: #ffc0cb;
+}

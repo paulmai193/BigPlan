@@ -1,6 +1,18 @@
 @extends('master')
 
 @section('title', 'FAQ')
+@section('navigator')
+	<div data-role="navbar">
+		<ul>
+			<li>
+				<a href="/method/1" data-icon="custom-refresh" data-iconpos="top" class="ui-nodisc-icon ui-btn-active ui-state-persist"></a>
+			</li>
+			<li>
+				<a href="/method/2" data-icon="custom-shuffle" data-iconpos="top" class="ui-nodisc-icon"></a>
+			</li>
+		</ul>
+	</div>	
+@stop
 
 @section('body')
 	<div class="title sub-title">
