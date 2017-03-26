@@ -42,9 +42,8 @@ track.updatePeriod = function(start,end) {
 		// If current period is set, update this period start / end time
 		id = track.currentPeriod;
 		var i = track.findPreriodById(id);
-		if(end === '') {
+		if(end === start) {
 			// In case user just enter start day, that mean set it into end day
-			end = start;
 			start = track.ranges[i].start;
 		}
 		track.ranges[i] = {'id': id, 'start': start, 'end': end};
@@ -54,10 +53,6 @@ track.updatePeriod = function(start,end) {
 		if(i > -1) {
 			start = track.ranges[i].start;
 			id = track.ranges[i].id;
-		}
-		if(end === '') {
-			// In case user just enter start day, that mean start = end day
-			end = start;
 		}
 		// If current period not set
 		if(track.TODAY >= start && track.TODAY <= end) {
