@@ -42,6 +42,11 @@
 					// grab an element
 					$(".ui-header").headroom();
 				});
+				$(document).on("pagecontainerbeforechange", function (e, data) {
+					if (typeof data.toPage == "string" && data.options.direction == "back") {
+						data.toPage = "/";
+					}
+				});
 			</script>
 			@yield('js')
 			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-headroom>
@@ -55,6 +60,7 @@
 			<div data-role="panel" data-display="push" data-theme="a" id="nav-menu">
 				<ul data-role="listview">
 					<li><h4>Menu</h4></li>
+					<li><a href="/" class="ui-btn ui-btn-icon-left ui-nodisc-icon ui-icon-custom ui-icon-custom-home">Welcome</a></li>
 					<li><a href="/method/1" class="ui-btn ui-btn-icon-left ui-nodisc-icon ui-icon-custom ui-icon-custom-calculator">Tính thời gian thụ thai</a></li>
 					<li><a href="/track/calendar" class="ui-btn ui-btn-icon-left ui-nodisc-icon ui-icon-custom ui-icon-custom-calendar">Theo dõi chu kỳ</a></li>
 					<li><a href="/faq" class="ui-btn ui-btn-icon-left ui-nodisc-icon ui-icon-custom ui-icon-custom-faq">FAQ</a></li>
