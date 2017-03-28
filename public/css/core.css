@@ -8,7 +8,7 @@ html {
         position: relative !important;
     }
 }
-@media ( min-width: 40em) {
+@media (min-width: 40em) {
     /* Show the table header rows and set all cells to display: table-cell */
     
     .my-custom-breakpoint td,
@@ -78,7 +78,7 @@ div.holoPressEffectDiv {
 .card-image .cover {
 	position: absolute;
 	top: 25%;
-	left: 38%;
+	left: calc(50% - 32px);
 }
 .card-image h1,
 .card-image h2,
