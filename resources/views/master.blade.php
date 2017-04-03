@@ -42,11 +42,11 @@
 					// grab an element
 					$(".ui-header").headroom();
 				});
-				$(document).on("pagecontainerbeforechange", function (e, data) {
+				/* $(document).on("pagecontainerbeforechange", function (e, data) {
 					if (typeof data.toPage == "string" && data.options.direction == "back") {
 						data.toPage = "/";
 					}
-				});
+				}); */
 			</script>
 			@yield('js')
 			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-headroom>
